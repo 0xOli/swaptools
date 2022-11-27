@@ -19,7 +19,7 @@ describe("SwapTools", function () {
   describe("Tick", function () {
     it("Should return correct tick", async function () {
       const { swapTools } = await loadFixture(deploySwapTools);
-      expect(await swapTools.tick(1e6)).to.equal(138162);
+      expect(await swapTools.tick(1_000_000)).to.equal(138162);
     });
   });
 });
