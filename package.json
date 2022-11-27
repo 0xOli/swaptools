@@ -5,6 +5,7 @@
     "hardhat": "^2.12.2"
   },
   "dependencies": {
-    "@uniswap/v3-core": "github:Uniswap/v3-core"
+    "@uniswap/v3-core": "github:Uniswap/v3-core",
+    "@uniswap/v3-sdk": "^3.9.0"
   }
 }

@@ -28,5 +28,10 @@ describe("SwapTools", function () {
       const someBigNumberish = `1${"0".repeat(18)}`;
       expect(await swapTools.tick(BigNumber.from(someBigNumberish))).to.equal(414486);
     });
+
+    it("Should return correct tick for price 10 000", async function () {
+      const { swapTools } = await loadFixture(deploySwapTools);
+      expect(await swapTools.tick(10_000)).to.equal(92108);
+    });
   });
 });
