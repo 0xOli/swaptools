@@ -4,6 +4,7 @@ const {
 } = require("@nomicfoundation/hardhat-network-helpers");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
+const { BigNumber } = ethers;
 
 describe("SwapTools", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -20,6 +21,12 @@ describe("SwapTools", function () {
     it("Should return correct tick", async function () {
       const { swapTools } = await loadFixture(deploySwapTools);
       expect(await swapTools.tick(1_000_000)).to.equal(138162);
+    });
+
+    it("Should return correct tick for price with 18 decimals", async function () {
+      const { swapTools } = await loadFixture(deploySwapTools);
+      const someBigNumberish = `1${"0".repeat(18)}`;
+      expect(await swapTools.tick(BigNumber.from(someBigNumberish))).to.equal(414486);
     });
   });
 });
